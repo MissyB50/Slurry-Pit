@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="silo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../shared/xml/schema/placeable.xsd">
+    <storeData>
+        <name>Slurry Pit</name>
+        <image>store.dds</image>
+        <functions>
+            <function>$l10n_function_liquidManureTank</function>
+        </functions>
+        <price>5000</price>
+        <dailyUpkeep>5</dailyUpkeep>
+        <lifetime>1000</lifetime>
+        <rotation>0</rotation>
+        <brand>NONE</brand>
+        <species>placeable</species>
+        <category>silos</category>
+        <brush>
+            <type>placeable</type>
+            <category>buildings</category>
+            <tab>silos</tab>
+        </brush>
+    </storeData>
+
+    <base>
+        <filename>slurryPit.i3d</filename>
+        <canBeRenamed>true</canBeRenamed>
+    </base>
+
+    <placement useRandomYRotation="false" useManualYRotation="true" >
+        <testAreas>
+            <testArea startNode="testAreaStart" endNode="testAreaEnd" />
+        </testAreas>
+    </placement>
+
+    <clearAreas>
+        <clearArea startNode="clearStart" widthNode="clearWidth" heightNode="clearHeight"/>
+    </clearAreas>
+
+    <leveling requireLeveling="true" maxSmoothDistance="10" maxSlope="75" maxEdgeAngle="30">
+        <levelAreas>
+            <levelArea startNode="clearStart" widthNode="clearWidth" heightNode="clearHeight" groundType="asphalt"/>
+        </levelAreas>
+    </leveling>
+
+    <indoorAreas/>
+
+    <tipOcclusionUpdateAreas>
+        <tipOcclusionUpdateArea startNode="tipOcclusionUpdateAreaStart" endNode="tipOcclusionUpdateAreaEnd" />
+    </tipOcclusionUpdateAreas>
+
+    <ai>
+        <updateAreas>
+            <updateArea startNode="tipOcclusionUpdateAreaStart" endNode="tipOcclusionUpdateAreaEnd" />
+        </updateAreas>
+        <splines>
+            <spline node="aiSpline" />
+        </splines>
+    </ai>
+
+    <infoTrigger triggerNode="infoTrigger"/>
+
+    <silo>
+        <loadingStation node="loadingTrigger" supportsExtension="true" storageRadius="70">
+            <loadTrigger triggerNode="loadingTrigger" fillLitersPerSecond="2000" dischargeNode="dischargeNode" fillTypes="LIQUIDMANURE DIGESTATE" aiNode="aiLoadingNode" />
+        </loadingStation>
+
+        <unloadingStation supportsExtension="true" storageRadius="50" >
+            <unloadTrigger exactFillRootNode="exactFillRootNode" fillTypes="LIQUIDMANURE DIGESTATE" aiNode="aiLoadingNode"/>
+        </unloadingStation>
+
+        <storages>
+            <storage node="storage" fillTypes="LIQUIDMANURE" capacity="500000" isExtension="true">
+                <fillPlane fillType="LIQUIDMANURE DIGESTATE" node="fillPlane" minY="-0.005" maxY="0.23" />
+            </storage>
+        </storages>
+    </silo>
+
+    <hotspots>
+        <hotspot type="LOADING" linkNode="mapPosition" />
+    </hotspots>
+
+    <triggerMarkers>
+        <triggerMarker node="markerLoading"   filename="$data/shared/assets/marker/markerIcons.xml" id="LOAD" />
+        <triggerMarker node="markerUnloading" filename="$data/shared/assets/marker/markerIcons.xml" id="UNLOAD" />
+    </triggerMarkers>
+
+    <animatedObject saveId="manhole" >
+        <animation duration="3">
+            <part node="top">
+                <keyFrame time="0.0" translation="-423 0.153 0" rotation="0 0 0"/>
+                <keyFrame time="1" translation="-423 0.153 0" rotation="0 0 -90"/>
+            </part>
+            <part node="hose">
+                <keyFrame time="0.0" visibility="false"/>
+                <keyFrame time="1.5" visibility="true" />
+            </part>
+        </animation>
+        <controls triggerNode="trigger" posAction="ACTIVATE_HANDTOOL" posText="action_openLid" negText="action_closedLid" />
+        <sounds>
+            <moving linkNode="top" file="$data/sounds/animations/hinges/hingeMedium01" loops="0"/>
+        </sounds>
+    </animatedObject>
+
+    <i3dMappings>
+        <i3dMapping id="manhole" node="0>0"/>
+        <i3dMapping id="top" node="0>0|1"/>
+        <i3dMapping id="hose" node="0>1|1"/>
+        <i3dMapping id="trigger" node="0>0|2"/>
+        <i3dMapping id="mapPosition" node="0>2|0" />
+        <i3dMapping id="storage" node="0>2|1" />
+        <i3dMapping id="fillPlane" node="0>1|0" />
+        <i3dMapping id="loadingTrigger" node="0>2|2|0" />
+        <i3dMapping id="dischargeNode" node="0>2|2|2" />
+        <i3dMapping id="aiLoadingNode" node="0>2|2|1" />
+        <i3dMapping id="aiSpline" node="0>2|2|3" />
+        <i3dMapping id="exactFillRootNode" node="0>2|3|0" />
+        <i3dMapping id="infoTrigger" node="0>2|4" />
+        <i3dMapping id="clearStart" node="0>3|0" />
+        <i3dMapping id="clearWidth" node="0>3|0|0" />
+        <i3dMapping id="clearHeight" node="0>3|0|1" />
+        <i3dMapping id="testAreaStart" node="0>4|0" />
+        <i3dMapping id="testAreaEnd" node="0>4|0|0" />
+        <i3dMapping id="tipOcclusionUpdateAreaStart" node="0>5|0" />
+        <i3dMapping id="tipOcclusionUpdateAreaEnd" node="0>5|0|0" />
+        <i3dMapping id="markerUnloading" node="0>6" />
+        <i3dMapping id="markerLoading" node="0>7" />
+
+    </i3dMappings>
+</placeable>

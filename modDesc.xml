@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<modDesc descVersion="67">
+    <author>MISSYB</author>
+    <version>1.0.0.0</version>
+    <title>
+        <en>Slurry Pit</en> 
+        <de>Güllegrube</de>
+	</title>
+    <description>
+<en><![CDATA[Slurry pit to store your Digestate and liquid manure for shorter trip's,
+This is ideally to be placed at the side of your field(s).
+
+Price: 5000
+Capacity: 500000
+DailyUpKeep: 5
+]]></en>
+
+<de><![CDATA[
+]]></de>
+
+<sw><![CDATA[
+]]></sw>
+
+</description>
+    <iconFilename>icon.dds</iconFilename>
+    <multiplayer supported="true"/>
+	<storeItems>
+        <storeItem xmlFilename="slurryPit.xml"/>
+    </storeItems>
+</modDesc>

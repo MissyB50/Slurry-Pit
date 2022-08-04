@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="concrete" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="9.0.3"/>
+  </Asset>
+
+  <Files>
+    <File fileId="8" filename="$data/fillPlanes/liquidManure_diffuse.dds"/>
+    <File fileId="9" filename="$data/fillPlanes/liquidManure_normal.dds"/>
+    <File fileId="10" filename="$data/fillPlanes/liquidManure_specular.dds"/>
+    <File fileId="1" filename="$data/maps/mapFR/textures/props/manholeFR_diffuse.dds"/>
+    <File fileId="2" filename="$data/maps/mapFR/textures/props/manholeFR_normal.dds"/>
+    <File fileId="3" filename="$data/maps/mapFR/textures/props/manholeFR_specular.dds"/>
+    <File fileId="4" filename="$data/shaders/placeableShader.xml"/>
+    <File fileId="14" filename="$data/shaders/vehicleShader.xml"/>
+    <File fileId="12" filename="$data/shared/default_normal.dds"/>
+    <File fileId="13" filename="$data/shared/default_specular.dds"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="15 - Default" materialId="4" diffuseColor="1 1 1 1" customShaderId="14" customShaderVariation="colorMask">
+      <Normalmap fileId="12"/>
+      <Glossmap fileId="13"/>
+      <CustomParameter name="RDT" value="0 0 0 0"/>
+      <CustomParameter name="dirtColor" value="0.2 0.14 0.08 0"/>
+      <CustomParameter name="colorMat0" value="0 0.08 0.05 1"/>
+      <CustomParameter name="colorMat1" value="1 0.1 0.1 1"/>
+      <CustomParameter name="colorMat2" value="0.1 1 0.1 1"/>
+      <CustomParameter name="colorMat3" value="0.1 0.1 1 1"/>
+      <CustomParameter name="colorMat4" value="1 1 0.1 1"/>
+      <CustomParameter name="colorMat5" value="0.05 0.05 0.05 1"/>
+      <CustomParameter name="colorMat6" value="1 0.1 1 1"/>
+      <CustomParameter name="colorMat7" value="0.1 1 1 1"/>
+    </Material>
+    <Material name="default" materialId="5" customShaderId="4" customShaderVariation="customParallax">
+      <Texture fileId="1"/>
+      <Normalmap fileId="2"/>
+      <Glossmap fileId="3"/>
+      <CustomParameter name="placeableColorScale" value="0 1 0 0"/>
+      <CustomParameter name="snowScale" value="1 0 0 0"/>
+    </Material>
+    <Material name="lambert1" materialId="6" diffuseColor="0.494118 0.494118 0.494118 1">
+    </Material>
+    <Material name="Material" materialId="7" customShaderId="4">
+      <Texture fileId="1"/>
+      <Normalmap fileId="2"/>
+      <Glossmap fileId="3"/>
+      <CustomParameter name="placeableColorScale" value="0 1 0 0"/>
+      <CustomParameter name="snowScale" value="1 0 0 0"/>
+    </Material>
+    <Material name="Material #32" materialId="8" diffuseColor="1 1 1 1" customShaderId="14" customShaderVariation="colorMask">
+      <Normalmap fileId="12"/>
+      <Glossmap fileId="13"/>
+      <CustomParameter name="RDT" value="0 0 0 0"/>
+      <CustomParameter name="dirtColor" value="0.2 0.14 0.08 0"/>
+      <CustomParameter name="colorMat0" value="0.8 0.55 0.05 1"/>
+      <CustomParameter name="colorMat1" value="1 0.1 0.1 1"/>
+      <CustomParameter name="colorMat2" value="0.1 1 0.1 1"/>
+      <CustomParameter name="colorMat3" value="0.1 0.1 1 1"/>
+      <CustomParameter name="colorMat4" value="1 1 0.1 1"/>
+      <CustomParameter name="colorMat5" value="0.05 0.05 0.05 1"/>
+      <CustomParameter name="colorMat6" value="1 0.1 1 1"/>
+      <CustomParameter name="colorMat7" value="0.1 1 1 1"/>
+    </Material>
+    <Material name="slurry_mat" materialId="9">
+      <Texture fileId="8"/>
+      <Normalmap fileId="9"/>
+      <Glossmap fileId="10"/>
+    </Material>
+    <Material name="UnnamedMaterial" materialId="40" diffuseColor="1 1 1 1">
+    </Material>
+    <Material name="UnnamedMaterial" materialId="10" diffuseColor="1 1 1 1">
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="slurryPit.i3d.shapes">
+  </Shapes>
+
+
+  <Dynamics>
+  </Dynamics>
+
+  <Scene>
+      <TransformGroup name="slurryPit" nodeId="23">
+        <Shape shapeId="1" name="manhole" lockedgroup="true" translation="0 0.152 0" static="true" clipDistance="400" nodeId="24" materialIds="5" castsShadows="true" receiveShadows="true">
+          <Shape shapeId="2" name="ring" translation="0 0.162459 0" rotation="-6.83019e-06 -0 0" static="true" clipDistance="400" nodeId="25" materialIds="5" castsShadows="true" receiveShadows="true"/>
+          <Shape shapeId="3" name="top" translation="-0.423244 0.152513 2.00461e-08" rotation="6.6478e-06 1.56826e-06 0" kinematic="true" clipDistance="400" nodeId="26" materialIds="7" castsShadows="true" receiveShadows="true"/>
+          <Shape shapeId="4" name="trigger" translation="1.12665 1.1 0" kinematic="true" trigger="true" collisionMask="1048576" nodeId="27" materialIds="6" nonRenderable="true"/>
+        </Shape>
+        <TransformGroup name="other" nodeId="28">
+          <Shape shapeId="5" name="slurry" translation="0 0.23 0" clipDistance="50" nodeId="29" materialIds="9" castsShadows="true" receiveShadows="true"/>
+          <Shape shapeId="6" name="hose" translation="0.86733 0.466768 0" visibility="false" nodeId="30" materialIds="8">
+            <Shape shapeId="7" name="hose" nodeId="31" materialIds="4"/>
+          </Shape>
+        </TransformGroup>
+        <TransformGroup name="silo" nodeId="32">
+          <TransformGroup name="mapPosition" translation="2 0 0" nodeId="33"/>
+          <TransformGroup name="storage" nodeId="34"/>
+          <TransformGroup name="loadingStation" nodeId="35">
+            <Shape shapeId="8" name="loadingTrigger" translation="2 0 0" static="true" trigger="true" collisionMask="1073741824" nodeId="36" materialIds="6" castsShadows="true" receiveShadows="true" nonRenderable="true"/>
+            <TransformGroup name="aiLoadingNode" translation="2 0 0" rotation="0 -90 0" nodeId="37"/>
+            <TransformGroup name="dischargeNode" translation="1.995 0 0" nodeId="38"/>
+            <Shape shapeId="9" name="aiSpline" translation="2 0 0" rotation="0 90 0" nodeId="39"/>
+          </TransformGroup>
+          <TransformGroup name="unloadingStation" nodeId="41">
+            <Shape shapeId="10" name="exactFillRootNode" translation="2 0 0" static="true" trigger="true" collisionMask="1073741824" density="0.0001" nodeId="42" materialIds="6" castsShadows="true" receiveShadows="true" nonRenderable="true"/>
+          </TransformGroup>
+          <Shape shapeId="11" name="infoTrigger" static="true" trigger="true" collisionMask="1048576" nodeId="43" materialIds="10" castsShadows="true" receiveShadows="true" nonRenderable="true"/>
+        </TransformGroup>
+        <TransformGroup name="clearAreas" nodeId="44">
+          <TransformGroup name="clearAreaStart" translation="-1 0 -1" nodeId="45">
+            <TransformGroup name="clearAreaWidth" translation="0 0 2" nodeId="46"/>
+            <TransformGroup name="clearAreaHeight" translation="2 0 0" nodeId="47"/>
+          </TransformGroup>
+        </TransformGroup>
+        <TransformGroup name="testAreas" nodeId="48">
+          <TransformGroup name="testAreaStart" translation="-0.75 0 -0.75" nodeId="49">
+            <TransformGroup name="testAreaEnd" translation="1.4 1 1.4" nodeId="50"/>
+          </TransformGroup>
+        </TransformGroup>
+        <TransformGroup name="tipOcclusionUpdateAreas" nodeId="51">
+          <TransformGroup name="tipOcclusionUpdateAreaStart" translation="-1 0 -1" nodeId="52">
+            <TransformGroup name="tipOcclusionUpdateAreaEnd" translation="2 0 2" nodeId="53"/>
+          </TransformGroup>
+        </TransformGroup>
+        <TransformGroup name="markerUnloading" translation="2 0 1" nodeId="54"/>
+        <TransformGroup name="markerLoading" translation="2 0 -1" nodeId="55"/>
+      </TransformGroup>
+  </Scene>
+
+</i3D>
